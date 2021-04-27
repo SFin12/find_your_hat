@@ -4,7 +4,7 @@ _______________________________________________________
 ## About
 
 - Codecademy project with very little guidence.
-- Practice with node.js and classes
+- Practice with node.js and classes.
 - There are two versions of the game:
     - Normal version based on codecademy instructions.
     - Programming version where you don't see your moves
@@ -19,7 +19,7 @@ _______________________________________________________
 ## More Details
 
 In the game you give instructions by typing 
-"u","d","l","r" for up, down, left, or right
+"u, d, l, or r" for up, down, left, or right
 followed by the return/enter key. 
 
 In the normal version you will see your moves printed
