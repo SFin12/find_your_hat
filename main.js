@@ -37,6 +37,22 @@ function setUpDifficulty() {
     return difficulty;
 };
 
+const sleep = (time = 1000) => {
+    return new Promise((resolve) => setTimeout(resolve, time))
+}
+
+
+const watchPath = async(allMoves, game) => {
+    for(dir of allMoves) {
+        var alive = game.update(dir);
+        game.print();
+        if(!alive) break;
+        await sleep(800);
+    }
+    var restart = prompt("Restart?(y/n)  ")
+    if(restart.includes('y')) startGame();
+};
+
 //first function to run. Allows user to setup game.
 function startGame() {
     var size = setUpSize();
@@ -44,6 +60,7 @@ function startGame() {
     var newField = Field.generateField(size[0], size[1], difficulty);
     var game = new Field(newField);
     var alive = true;
+    var allMoves = []
     console.log("Welcome to Hat Finder");
     console.log('controls: \n d = down, \n u = up, \n r = right, \n l = left');
     game.print();
@@ -51,12 +68,16 @@ function startGame() {
     while (alive) {
         var move = prompt("Move:  ").toLowerCase();
         if (move === 'd' || move === 'u' || move === 'r' || move === 'l') {
-            alive = game.update(move);
-            game.print();
+            allMoves.push(move)
+
+        } else if (move == 'done') {
+            alive = watchPath(allMoves, game);
+            alive = false;
+            
         } else {
-            console.log("please use one of the following: u,d,r,l")
+            console.log("please use one of the following: u,d,r,l");
         }
-    }
+    } 
 };
 
 console.log("Welcome to Hat Finder");
