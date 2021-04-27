@@ -1,4 +1,4 @@
-const Field = require("./classes.js");
+const Field = require("./node_modules/classes.js");
 const prompt = require('prompt-sync')({ sigint: true });
 
 
